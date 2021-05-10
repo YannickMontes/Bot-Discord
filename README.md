@@ -57,7 +57,7 @@ La raison au kick peut-être optionnelle.
 
 Le bot devra nous renvoyer une réponse, comme sur l'exemple ci-dessous : 
 
-![kick exemple](ReadmeImages/kickexemple.PNG)
+![kick exemple](ReadmeImages/kickexemple.png)
 
 ### 2.4 La commande ban & unban
 
@@ -73,14 +73,14 @@ La raison au ban peut-être optionnelle.
 
 Le bot devra nous renvoyer une réponse, comme sur l'exemple ci-dessous : 
 
-![ban exemple](ReadmeImages/banExemple.PNG)
+![ban exemple](ReadmeImages/banExemple.png)
 
 Nous voulez pouvoir dé-bannir un utilisateur, via la commande **unban**. Un exemple suit ci-desous:
 ```
 #unban @user
 ```
 
-![ban exemple](ReadmeImages/unbanExemple.PNG)
+![ban exemple](ReadmeImages/unbanExemple.png)
 
 ### 2.5 Les commandes mute & unmute
 
@@ -97,9 +97,9 @@ Une fois ce temps écoulé, l'utilisateur récupère le rôle "Membre". La comma
 
 La suite d'image montre l'utilisation de la commande, ainsi que de son inverse **unmute**. Le bot devra répondre lorsque on déclenche la commande mute.
 
-![mute exemple](ReadmeImages/muteExemple.PNG)
+![mute exemple](ReadmeImages/muteExemple.png)
 
-![unmute exemple](ReadmeImages/unmuteExemple.PNG)
+![unmute exemple](ReadmeImages/unmuteExemple.png)
 
 *Hint: Vous pouvez utiliser le package **"ms"** de npm, pour pouvoir interpréter les durées de temps sous forme de "1m", "10s", ect.
 
@@ -118,7 +118,7 @@ Généralement, ces rôles permettent d'accéder à certains channels (textuels 
 
 Voici un exemple ci-dessous: 
 
-![reaction role exemple](ReadmeImages/reactionRoleExemple.PNG)
+![reaction role exemple](ReadmeImages/reactionRoleExemple.png)
 
 ## 4. Créer un sondage via la commande Poll
 
@@ -156,7 +156,7 @@ Pour cette partie, vous allez devoir utiliser les packages **ytdl-core** et **yt
 
 Un exemple de l'utilisation de la commande est visible ci-dessous :
 
-![play exemple](ReadmeImages/playExemple.PNG)
+![play exemple](ReadmeImages/playExemple.png)
 
 ### 5.2 La commande skip
 
@@ -172,7 +172,7 @@ Cette commande aura pour conséquence d'arrêter la musique en cours, et de fair
 
 Un exemple d'utilisation: 
 
-![stop exemple](ReadmeImages/stopExemple.PNG)
+![stop exemple](ReadmeImages/stopExemple.png)
 
 ### 6 Les triggers
 
@@ -196,7 +196,7 @@ La seule contrainte pour créer un trigger est de vérifier que ce dernier n'exi
 
 Voici un exemple ci-dessous: 
 
-![addtrigger exemple](ReadmeImages/addTriggerExemple.PNG)
+![addtrigger exemple](ReadmeImages/addTriggerExemple.png)
 
 ### 6.2 Supprimer un trigger
 
@@ -204,7 +204,7 @@ Une commande pour supprimer un trigger sera disponible. Elle prendra en paramèt
 
 Voici un exemple ci-dessous: 
 
-![rmtrigger exemple](ReadmeImages/rmTriggerExemple.PNG)
+![rmtrigger exemple](ReadmeImages/rmTriggerExemple.png)
 
 ### 6.3 Inspecter tout les triggers
 
@@ -214,7 +214,7 @@ Elle retournera la liste des triggers existants, sans le contenu qu'elle trigger
 
 Voici un exemple ci-dessous: 
 
-![triggerlist exemple](ReadmeImages/triggerListExemple.PNG)
+![triggerlist exemple](ReadmeImages/triggerListExemple.png)
 
 ### 6.4 Bonus: inspect & modify
 
