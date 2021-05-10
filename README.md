@@ -122,7 +122,7 @@ Voici un exemple ci-dessous:
 
 ## 4. Créer un sondage via la commande Poll
 
-Inspiré du bot Simple poll (que vous pouvez voir ![ici](https://top.gg/bot/simplepoll)), nous allons créer une commande permettant de créer un sondage. 
+Inspiré du bot Simple poll (que vous pouvez voir [ici](https://top.gg/bot/simplepoll)), nous allons créer une commande permettant de créer un sondage. 
 
 Les paramètres de la commande sont:
 - La question du sondage
@@ -214,7 +214,7 @@ Elle retournera la liste des triggers existants, sans le contenu qu'elle trigger
 
 Voici un exemple ci-dessous: 
 
-![triggerlist exemple](ReadmeImages/triggerListExemple.png)
+![triggerlist exemple](ReadmeImages/triggerList.png)
 
 ### 6.4 Bonus: inspect & modify
 
@@ -231,9 +231,9 @@ Si vous n'avez vraiment pas d'idées, n'hésitez pas à regarder ce qui se fait 
 
 Sinon, j'ai quelques idées ci-dessous: 
 - Une commande pour récupérer les sujets actuellement en tendance France (ou Monde) sur Twitter, voir même les plus gros tweet en question sur un # précis
-- Une commande qui permet de récupérer la vidéo de HugoDecrypte la plus récente pour les actus du jour (pour ceux qui ne connaissent pas, c'est ![ici](https://www.youtube.com/c/HugoD%C3%A9crypte/videos)
+- Une commande qui permet de récupérer la vidéo de HugoDecrypte la plus récente pour les actus du jour (pour ceux qui ne connaissent pas, c'est [ici](https://www.youtube.com/c/HugoD%C3%A9crypte/videos)
 - Une commande pour bouger toutes les personnes d'un channel vocal vers un autre
-- Une commande pour savoir si c'est l'heure de l'apéro (grandement inspiré de ![ça](https://estcequecestbientotlapero.fr/)....) *(+20 points)*
+- Une commande pour savoir si c'est l'heure de l'apéro (grandement inspiré de [ça](https://estcequecestbientotlapero.fr/)....) *(+20 points)*
 - Et que sais-je encore !
 
 
