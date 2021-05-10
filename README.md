@@ -21,6 +21,8 @@ La notation se fera sur 100 points.
 
 Imaginons que vous vouliez utiliser votre bot à des fins de modérations, relativement basiques, permettant de kicker un utilisateur du serveur, de bannir un utilisateur, de timeout quelqu’un pour qu’il ne puisse pas parler, ect. Nous allons dans un premier temps implémenter ces commandes.
 
+Notez que pour chaque commande, s'il se passe une erreur lors de l'exécution, le bot devra informer l'utilisateur qui a déclenché la commande qu'il y a eu un problème. Vous devez donc penser à une **gestion des erreurs**.
+
 ### 2.1 Définir un préfixe
 
 Avant de commencer quoi que ce soit, nous aurons besoin de définir un **préfixe** qui nous permettra de différencier les messages normaux envoyés dans les channels, des messages contenant des commandes devant être interceptés par le bot.
@@ -51,7 +53,151 @@ La commande devra ressembler à ceci :
 #kick @user <raison>
 ```
 
-Il peut ne pas y avoir de raison au kick, ce n'est pas un problème. 
+La raison au kick peut-être optionnelle. 
 
 Le bot devra nous renvoyer une réponse, comme sur l'exemple ci-dessous : 
 
+![kick exemple](ReadmeImages/kickexemple.PNG)
+
+### 2.4 La commande ban & unban
+
+Très similaire à la commande kick, elle permet de bannir un utilisateur du serveur, mais cette fois-ci sans autoriser la personne virée de le rejoindre à nouveau.
+
+La commande devra ressembler à ceci :
+
+```
+#ban @user <raison>
+```
+
+La raison au ban peut-être optionnelle. 
+
+Le bot devra nous renvoyer une réponse, comme sur l'exemple ci-dessous : 
+
+![ban exemple](ReadmeImages/banExemple.PNG)
+
+Nous voulez pouvoir dé-bannir un utilisateur, via la commande **unban**. Un exemple suit ci-desous:
+```
+#unban @user
+```
+
+![ban exemple](ReadmeImages/unbanExemple.PNG)
+
+### 2.5 Les commandes mute & unmute
+
+Via cette commande, nous allons essayer d'empêcher un utilisateur de pouvoir parler sur le serveur pour un temps donné.
+
+Pour vous donner quelques pistes, nous allons utiliser les rôles pour ceci. L'objectif va être de créer un role ***"Mute"***, qui possèdera uniquement les droits de lecture, ainsi qu'un rôle "Membre", qui possèdera lui tout les droits qu'un utilisteur du serveur est censé avoir. 
+
+Vous devrez également désactiver tout les droits du rôle de base @everyone, autrement le timeout ne fonctionnera pas.
+
+
+Lorsque l'on timeout un utilisateur, l'objectif est de lui retirer le rôle "Membre", et de lui assigner le rôle ***"Mute"*** pour un temps donné. 
+
+Une fois ce temps écoulé, l'utilisateur récupère le rôle "Membre". La commande **unmute** permet également d'oublier ce timer, et de permettre directement à l'utilisateur de reparler à nouveau.
+
+La suite d'image montre l'utilisation de la commande, ainsi que de son inverse **unmute**. Le bot devra répondre lorsque on déclenche la commande mute.
+
+![mute exemple](ReadmeImages/muteExemple.PNG)
+
+![unmute exemple](ReadmeImages/unmuteExemple.PNG)
+
+*Hint: Vous pouvez utiliser le package **"ms"** de npm, pour pouvoir interpréter les durées de temps sous forme de "1m", "10s", ect.
+
+## 3. Créer un sondage via la commande Poll
+
+Inspiré du bot Simple poll (que vous pouvez voir ![ici](https://top.gg/bot/simplepoll)), nous allons créer une commande permettant de créer un sondage. 
+
+Les paramètres de la commande sont:
+- La question du sondage
+- Autant d'options qu'on veut ...(bon pas tout à fait, on va mettre la limite a 26, le nombre de lettres de l'alphabet, vous allez voir pourquoi)
+
+Voici un exemple d'utilisation :
+
+![poll exemple](ReadmeImages/pollExemple.PNG)
+
+*Hint: Pensez à regarder la doc de Discord.js, qui permet de créer pleins de messages bien formatté, comme les MessageEmbed par exemple.*
+
+## 4. Jouer de la musique dans un salon vocal
+
+Pour s'ambiancer jusqu'a pas d'heures pendant les sessions de ~~gaming~~ cours, rien ne vaut un petit peu de musique.
+
+Vous allez devoir implémenter la possibilité de jouer une musique dans un channel vocal, joué par votre bot.
+
+Rassurez-vous, il existe déjà beaucoup de choses permettant de nous faciliter la tâche. 
+
+Le bot communiquera directement avec Youtube pour récupérer la musique qu'on lui demande. Chaque utilisateur pouvant envoyer des commandes au bot pourra lancer une nouvelle musique (qui s'ajoutera à la file d'attente), passer la musique en cours, ou décider d'arrêter complètement le bot de musique.
+
+Lorsqu'une musique est terminée, le bot regarde s'il lui reste des musiques dans sa file d'attente. Si oui, il passe a la suivante, si non, il quitte le salon vocal.
+
+Toute commande venant d'un utilisateur qui ne se situe pas dans un channel vocal ne sera pas acceptée.
+
+### 4.1 La commande play
+
+Pour commencer, nous allons demander au bot de jouer une musique. La commande prendra en paramètre, soit une URL youtube directement, soit une phrase, qui sera recherchée directement sur Youtube. Le bot devra prendre le premier résultat trouvé, par facilité.
+
+Pour cette partie, vous allez devoir utiliser les packages **ytdl-core** et **yt-search** qui permettront de se passer de tout les traitements de discussion avec l'API de Youtube.
+
+Un exemple de l'utilisation de la commande est visible ci-dessous :
+
+![play exemple](ReadmeImages/playExemple.PNG)
+
+### 4.2 La commande skip
+
+Cette commande permettra de passer a la chanson suivante. S'il n'y en a pas, le bot quittera le channel vocal.
+
+Un exemple d'utilisation: 
+
+![skip exemple](ReadmeImages/skipExemple.PNG)
+
+### 4.3 La commande stop
+
+Cette commande aura pour conséquence d'arrêter la musique en cours, et de faire quitter le channel vocal au bot.
+
+Un exemple d'utilisation: 
+
+![stop exemple](ReadmeImages/stopExemple.PNG)
+
+### 5 Les triggers
+
+Toujours dans le but de passer le moment le plus exceptionnel qu'il soit sur notre serveur, on aimerait bien que notre bot possède des triggers.
+
+L'idée, c'est que le bot réagisse à certaines phrases, rentrées au préalable par l'utilisateur, par une autre phrase, une image, un gif...
+
+Pour cela, nous allons devoir créer une base de données qui stockera chaque trigger que le bot possède. 
+
+Vous êtes libre de choisir le type de base de données que vous voulez, je vous conseille de vous orienter vers MongoDB, pour rester dans la continuité de ce que l'on a vu en cours. 
+
+Chaque commande devra permettre à l'utilisateur de savoir si elle a bien fonctionné, ou non.
+
+Pour vous faciliter la tâche, je vous conseille de partir du principe que chaque paramètre qui sera passé à la commande sera entre ```{}```
+
+### 5.1 Ajouter un trigger
+
+L'utilisateur du bot devra être capable d'ajouter un trigger a la base de données. 
+
+La seule contrainte pour créer un trigger est de vérifier que ce dernier n'existe pas déjà dans la base de données (par exemple, je ne peux pas voir 2 triggers pour la phrase "je mange des chocolatines"). 
+
+Voici un exemple ci-dessous: 
+
+![addtrigger exemple](ReadmeImages/addTriggerExemple.PNG)
+
+
+### 5.2 Supprimer un trigger
+
+Une commande pour supprimer un trigger sera disponible. Elle prendra en paramètre la triggerPhrase du trigger. 
+
+Voici un exemple ci-dessous: 
+
+![rmtrigger exemple](ReadmeImages/rmTriggerExemple.PNG)
+
+### 5.1 Ajouter un trigger
+
+L'utilisateur du bot devra être capable d'ajouter un trigger a la base de données. 
+
+La seule contrainte pour créer un trigger est de vérifier que ce dernier n'existe pas déjà dans la base de données (par exemple, je ne peux pas voir 2 triggers pour la phrase "je mange des chocolatines"). 
+
+Voici un exemple ci-dessous: 
+
+![addtrigger exemple](ReadmeImages/addTriggerExemple.PNG)
+
+### 6 Quelquechose de créatif ?
