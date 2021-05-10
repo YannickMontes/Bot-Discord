@@ -103,7 +103,24 @@ La suite d'image montre l'utilisation de la commande, ainsi que de son inverse *
 
 *Hint: Vous pouvez utiliser le package **"ms"** de npm, pour pouvoir interpréter les durées de temps sous forme de "1m", "10s", ect.
 
-## 3. Créer un sondage via la commande Poll
+## 3. Gérer l'acceuil et les réactions
+
+### 3.1 Traitement lors d'un nouvel arrivant 
+
+Comme nous avons virer tout les droits pour le rôle ```@everyone```, chaque personne qui va rejoindre le serveur va se retrouver sans droits ni rien. Il faut donc assigner à chaque personne qui arrive le rôle de "Membre", et potentiellement lui envoyer un petit message d'accueil dans un channel ```#bienvenue```.
+
+Pour cela, vous pourrez utiliser la fonction ```client.on('guildMemberAdd', guildMember => {})``` de Discord.js.
+
+### 3.2 Assigner des rôles selon les réactions
+
+Par soucis de facilité sur les gros serveur discord, chaque utilisateur décide de s'assigner les rôles qu'il veut sur le serveur. 
+Généralement, ces rôles permettent d'accéder à certains channels (textuels ou vocaux) du serveur. Sans ce rôle, impossible d'y accéder. 
+
+Voici un exemple ci-dessous: 
+
+![reaction role exemple](ReadmeImages/reactionRoleExemple.PNG)
+
+## 4. Créer un sondage via la commande Poll
 
 Inspiré du bot Simple poll (que vous pouvez voir ![ici](https://top.gg/bot/simplepoll)), nous allons créer une commande permettant de créer un sondage. 
 
@@ -117,7 +134,7 @@ Voici un exemple d'utilisation :
 
 *Hint: Pensez à regarder la doc de Discord.js, qui permet de créer pleins de messages bien formatté, comme les MessageEmbed par exemple.*
 
-## 4. Jouer de la musique dans un salon vocal
+## 5. Jouer de la musique dans un salon vocal
 
 Pour s'ambiancer jusqu'a pas d'heures pendant les sessions de ~~gaming~~ cours, rien ne vaut un petit peu de musique.
 
@@ -131,7 +148,7 @@ Lorsqu'une musique est terminée, le bot regarde s'il lui reste des musiques dan
 
 Toute commande venant d'un utilisateur qui ne se situe pas dans un channel vocal ne sera pas acceptée.
 
-### 4.1 La commande play
+### 5.1 La commande play
 
 Pour commencer, nous allons demander au bot de jouer une musique. La commande prendra en paramètre, soit une URL youtube directement, soit une phrase, qui sera recherchée directement sur Youtube. Le bot devra prendre le premier résultat trouvé, par facilité.
 
@@ -141,7 +158,7 @@ Un exemple de l'utilisation de la commande est visible ci-dessous :
 
 ![play exemple](ReadmeImages/playExemple.PNG)
 
-### 4.2 La commande skip
+### 5.2 La commande skip
 
 Cette commande permettra de passer a la chanson suivante. S'il n'y en a pas, le bot quittera le channel vocal.
 
@@ -149,7 +166,7 @@ Un exemple d'utilisation:
 
 ![skip exemple](ReadmeImages/skipExemple.PNG)
 
-### 4.3 La commande stop
+### 5.3 La commande stop
 
 Cette commande aura pour conséquence d'arrêter la musique en cours, et de faire quitter le channel vocal au bot.
 
@@ -157,7 +174,7 @@ Un exemple d'utilisation:
 
 ![stop exemple](ReadmeImages/stopExemple.PNG)
 
-### 5 Les triggers
+### 6 Les triggers
 
 Toujours dans le but de passer le moment le plus exceptionnel qu'il soit sur notre serveur, on aimerait bien que notre bot possède des triggers.
 
@@ -171,7 +188,7 @@ Chaque commande devra permettre à l'utilisateur de savoir si elle a bien foncti
 
 Pour vous faciliter la tâche, je vous conseille de partir du principe que chaque paramètre qui sera passé à la commande sera entre ```{}```
 
-### 5.1 Ajouter un trigger
+### 6.1 Ajouter un trigger
 
 L'utilisateur du bot devra être capable d'ajouter un trigger a la base de données. 
 
@@ -181,8 +198,7 @@ Voici un exemple ci-dessous:
 
 ![addtrigger exemple](ReadmeImages/addTriggerExemple.PNG)
 
-
-### 5.2 Supprimer un trigger
+### 6.2 Supprimer un trigger
 
 Une commande pour supprimer un trigger sera disponible. Elle prendra en paramètre la triggerPhrase du trigger. 
 
@@ -190,14 +206,35 @@ Voici un exemple ci-dessous:
 
 ![rmtrigger exemple](ReadmeImages/rmTriggerExemple.PNG)
 
-### 5.1 Ajouter un trigger
+### 6.3 Inspecter tout les triggers
 
-L'utilisateur du bot devra être capable d'ajouter un trigger a la base de données. 
+Pour pouvoir savoir quels triggers existent sur le serveur, une commande ```triggerlist``` sera disponible. 
 
-La seule contrainte pour créer un trigger est de vérifier que ce dernier n'existe pas déjà dans la base de données (par exemple, je ne peux pas voir 2 triggers pour la phrase "je mange des chocolatines"). 
+Elle retournera la liste des triggers existants, sans le contenu qu'elle trigger (qui pourrait ne pas tenir en 1 message).
 
 Voici un exemple ci-dessous: 
 
-![addtrigger exemple](ReadmeImages/addTriggerExemple.PNG)
+![triggerlist exemple](ReadmeImages/triggerListExemple.PNG)
 
-### 6 Quelquechose de créatif ?
+### 6.4 Bonus: inspect & modify
+
+Par soucis de facilité, on aimerait bien pouvoir avoir le contenu d'un seul trigger en utilisant la commande ```inspect```. Elle nous renverrai le contenu que est trigger lorsque le trigger est envoyé dans le chat. 
+
+
+De la même manière, pour éviter de supprimer et recréer un trigger, on aimerait pouvoir le modifier. Pour cela, une commande ```modifytrigger```, prenant en paramètre le nom du trigger, puis un JSON de modification (par exemple) serait le bienvenu. 
+
+### 7 Quelquechose de créatif ?
+
+A vous de m'épater en créant une commande un peu fun ! Cela peut être n'importe quoi.
+
+Si vous n'avez vraiment pas d'idées, n'hésitez pas à regarder ce qui se fait déjà, et essayer de re-coder le comportement.
+
+Sinon, j'ai quelques idées ci-dessous: 
+- Une commande pour récupérer les sujets actuellement en tendance France (ou Monde) sur Twitter, voir même les plus gros tweet en question sur un # précis
+- Une commande qui permet de récupérer la vidéo de HugoDecrypte la plus récente pour les actus du jour (pour ceux qui ne connaissent pas, c'est ![ici](https://www.youtube.com/c/HugoD%C3%A9crypte/videos)
+- Une commande pour bouger toutes les personnes d'un channel vocal vers un autre
+- Une commande pour savoir si c'est l'heure de l'apéro (grandement inspiré de ![ça](https://estcequecestbientotlapero.fr/)....) *(+20 points)*
+- Et que sais-je encore !
+
+
+Happy Hacking !
