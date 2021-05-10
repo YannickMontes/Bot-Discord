@@ -15,21 +15,24 @@ Via la création d’un bot pour le logiciel de discussion Discord, nous allons 
     
 ### 1.2 La notation
 
-La notation se fera sur 100 points.
+La notation se fera sur 100 points. Chaque partie possède une note qui sera précisée à côté du titre. 
 
-## 2. Les fonctionnalités de base
+Le fonctionnement global de votre bot est noté sur **80**, les **20** points restants se jouent sur la qualité du code (organisaiton, lisibilité, propreté). 
+La note sera ramené sur 20 par la suite. 
+
+## 2. Les fonctionnalités de base *(15 points)*
 
 Imaginons que vous vouliez utiliser votre bot à des fins de modérations, relativement basiques, permettant de kicker un utilisateur du serveur, de bannir un utilisateur, de timeout quelqu’un pour qu’il ne puisse pas parler, ect. Nous allons dans un premier temps implémenter ces commandes.
 
 Notez que pour chaque commande, s'il se passe une erreur lors de l'exécution, le bot devra informer l'utilisateur qui a déclenché la commande qu'il y a eu un problème. Vous devez donc penser à une **gestion des erreurs**.
 
-### 2.1 Définir un préfixe
+### 2.1 Définir un préfixe *(1pt)*
 
 Avant de commencer quoi que ce soit, nous aurons besoin de définir un **préfixe** qui nous permettra de différencier les messages normaux envoyés dans les channels, des messages contenant des commandes devant être interceptés par le bot.
 
 Pour la suite de cet énnoncé, nous allons utiliser le préfixe **#**. 
 
-### 2.2 La commande clear
+### 2.2 La commande clear *(2pts)*
 
 L’objectif est de vider un channel discord d’un certain nombre de messages.
 
@@ -43,7 +46,7 @@ Faites attention toutefois, Discord ne nous autorise à supprimer que seulement 
 
 Le bot peut renvoyer une réponse, ou pas, c'est à vous de choisir. 
 
-### 2.3 La commande kick
+### 2.3 La commande kick *(3pts)*
 
 Avec cette commande, nous allons pouvoir virer un utilisateur du serveur. Ce dernier pourra néanmoins toujours le rejoindre. 
 
@@ -59,7 +62,7 @@ Le bot devra nous renvoyer une réponse, comme sur l'exemple ci-dessous :
 
 ![kick exemple](ReadmeImages/kickexemple.PNG)
 
-### 2.4 La commande ban & unban
+### 2.4 La commande ban & unban *(5pts)*
 
 Très similaire à la commande kick, elle permet de bannir un utilisateur du serveur, mais cette fois-ci sans autoriser la personne virée de le rejoindre à nouveau.
 
@@ -82,7 +85,7 @@ Nous voulez pouvoir dé-bannir un utilisateur, via la commande **unban**. Un exe
 
 ![ban exemple](ReadmeImages/unbanExemple.png)
 
-### 2.5 Les commandes mute & unmute
+### 2.5 Les commandes mute & unmute *(5pts)*
 
 Via cette commande, nous allons essayer d'empêcher un utilisateur de pouvoir parler sur le serveur pour un temps donné.
 
@@ -103,15 +106,15 @@ La suite d'image montre l'utilisation de la commande, ainsi que de son inverse *
 
 *Hint: Vous pouvez utiliser le package **"ms"** de npm, pour pouvoir interpréter les durées de temps sous forme de "1m", "10s", ect.
 
-## 3. Gérer l'acceuil et les réactions
+## 3. Gérer l'acceuil et les réactions *(7 points)*
 
-### 3.1 Traitement lors d'un nouvel arrivant 
+### 3.1 Traitement lors d'un nouvel arrivant *(3 pts)*
 
 Comme nous avons virer tout les droits pour le rôle ```@everyone```, chaque personne qui va rejoindre le serveur va se retrouver sans droits ni rien. Il faut donc assigner à chaque personne qui arrive le rôle de "Membre", et potentiellement lui envoyer un petit message d'accueil dans un channel ```#bienvenue```.
 
 Pour cela, vous pourrez utiliser la fonction ```client.on('guildMemberAdd', guildMember => {})``` de Discord.js.
 
-### 3.2 Assigner des rôles selon les réactions
+### 3.2 Assigner des rôles selon les réactions *(5 pts)*
 
 Par soucis de facilité sur les gros serveur discord, chaque utilisateur décide de s'assigner les rôles qu'il veut sur le serveur. 
 Généralement, ces rôles permettent d'accéder à certains channels (textuels ou vocaux) du serveur. Sans ce rôle, impossible d'y accéder. 
@@ -120,7 +123,7 @@ Voici un exemple ci-dessous:
 
 ![reaction role exemple](ReadmeImages/reactionRoleExemple.png)
 
-## 4. Créer un sondage via la commande Poll
+## 4. Créer un sondage via la commande Poll *(8 points)*
 
 Inspiré du bot Simple poll (que vous pouvez voir [ici](https://top.gg/bot/simplepoll)), nous allons créer une commande permettant de créer un sondage. 
 
@@ -134,7 +137,7 @@ Voici un exemple d'utilisation :
 
 *Hint: Pensez à regarder la doc de Discord.js, qui permet de créer pleins de messages bien formatté, comme les MessageEmbed par exemple.*
 
-## 5. Jouer de la musique dans un salon vocal
+## 5. Jouer de la musique dans un salon vocal *(20 points)*
 
 Pour s'ambiancer jusqu'a pas d'heures pendant les sessions de ~~gaming~~ cours, rien ne vaut un petit peu de musique.
 
@@ -148,7 +151,7 @@ Lorsqu'une musique est terminée, le bot regarde s'il lui reste des musiques dan
 
 Toute commande venant d'un utilisateur qui ne se situe pas dans un channel vocal ne sera pas acceptée.
 
-### 5.1 La commande play
+### 5.1 La commande play *(8)*
 
 Pour commencer, nous allons demander au bot de jouer une musique. La commande prendra en paramètre, soit une URL youtube directement, soit une phrase, qui sera recherchée directement sur Youtube. Le bot devra prendre le premier résultat trouvé, par facilité.
 
@@ -158,15 +161,8 @@ Un exemple de l'utilisation de la commande est visible ci-dessous :
 
 ![play exemple](ReadmeImages/playExemple.png)
 
-### 5.2 La commande skip
 
-Cette commande permettra de passer a la chanson suivante. S'il n'y en a pas, le bot quittera le channel vocal.
-
-Un exemple d'utilisation: 
-
-![skip exemple](ReadmeImages/skipExemple.PNG)
-
-### 5.3 La commande stop
+### 5.2 La commande stop *(8)*
 
 Cette commande aura pour conséquence d'arrêter la musique en cours, et de faire quitter le channel vocal au bot.
 
@@ -174,7 +170,16 @@ Un exemple d'utilisation:
 
 ![stop exemple](ReadmeImages/stopExemple.png)
 
-### 6 Les triggers
+### 5.3 La commande skip *(4)*
+
+Cette commande permettra de passer a la chanson suivante. S'il n'y en a pas, le bot quittera le channel vocal.
+
+Un exemple d'utilisation: 
+
+![skip exemple](ReadmeImages/skipExemple.PNG)
+
+
+### 6 Les triggers *(30 points)*
 
 Toujours dans le but de passer le moment le plus exceptionnel qu'il soit sur notre serveur, on aimerait bien que notre bot possède des triggers.
 
@@ -188,7 +193,7 @@ Chaque commande devra permettre à l'utilisateur de savoir si elle a bien foncti
 
 Pour vous faciliter la tâche, je vous conseille de partir du principe que chaque paramètre qui sera passé à la commande sera entre ```{}```
 
-### 6.1 Ajouter un trigger
+### 6.1 Ajouter un trigger *(12)*
 
 L'utilisateur du bot devra être capable d'ajouter un trigger a la base de données. 
 
@@ -198,7 +203,7 @@ Voici un exemple ci-dessous:
 
 ![addtrigger exemple](ReadmeImages/addTriggerExemple.png)
 
-### 6.2 Supprimer un trigger
+### 6.2 Supprimer un trigger *(12)*
 
 Une commande pour supprimer un trigger sera disponible. Elle prendra en paramètre la triggerPhrase du trigger. 
 
@@ -206,7 +211,7 @@ Voici un exemple ci-dessous:
 
 ![rmtrigger exemple](ReadmeImages/rmTriggerExemple.png)
 
-### 6.3 Inspecter tout les triggers
+### 6.3 Inspecter tout les triggers *(6)*
 
 Pour pouvoir savoir quels triggers existent sur le serveur, une commande ```triggerlist``` sera disponible. 
 
@@ -216,7 +221,7 @@ Voici un exemple ci-dessous:
 
 ![triggerlist exemple](ReadmeImages/triggerList.png)
 
-### 6.4 Bonus: inspect & modify
+### 6.5 Bonus: inspect & modify
 
 Par soucis de facilité, on aimerait bien pouvoir avoir le contenu d'un seul trigger en utilisant la commande ```inspect```. Elle nous renverrai le contenu que est trigger lorsque le trigger est envoyé dans le chat. 
 
