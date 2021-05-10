@@ -57,7 +57,7 @@ La raison au kick peut-être optionnelle.
 
 Le bot devra nous renvoyer une réponse, comme sur l'exemple ci-dessous : 
 
-![kick exemple](ReadmeImages/kickexemple.png)
+![kick exemple](ReadmeImages/kickexemple.PNG)
 
 ### 2.4 La commande ban & unban
 
