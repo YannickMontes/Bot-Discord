@@ -221,14 +221,29 @@ Voici un exemple ci-dessous:
 
 ![triggerlist exemple](ReadmeImages/triggerList.png)
 
-### 6.5 Bonus: inspect & modify
+### 6.4 Bonus: inspect & modify
 
 Par soucis de facilité, on aimerait bien pouvoir avoir le contenu d'un seul trigger en utilisant la commande ```inspect```. Elle nous renverrai le contenu que est trigger lorsque le trigger est envoyé dans le chat. 
 
 
 De la même manière, pour éviter de supprimer et recréer un trigger, on aimerait pouvoir le modifier. Pour cela, une commande ```modifytrigger```, prenant en paramètre le nom du trigger, puis un JSON de modification (par exemple) serait le bienvenu. 
 
-### 7 Quelquechose de créatif ?
+### 7 Songlink/Odesli: utilisation d'une API externe
+
+Si vous ne connaissez pas Songlink, c'est une API qui permet d'obtenir les liens d'une musique sur toutes les plateforme, depuis une spécifique.
+
+Par exemple, si vous prenez la musique Ride - Twenty One Pilots sur youtube, le lien est le suivant: https://www.youtube.com/watch?v=Pw-0pbY9JeU
+
+Si vous souhaitez obtenir tout les liens pour toutes les plateformes, ouvrez votre navigateur, et taper dans votre URL song.link/https://www.youtube.com/watch?v=Pw-0pbY9JeU
+
+Vous arriverez sur une page avec toutes les plateformes.
+
+
+L'objectif est de pouvoir avoir cette page directement sur discord, envoyé par le bot, lorsqu'on lui donne un lien spotify/youtube/discord... 
+
+Pour ce faire, vous pouvez vous aider de la documentation [ici](https://www.notion.so/API-d0ebe08a5e304a55928405eb682f6741).
+
+### 8 Quelquechose de créatif ?
 
 A vous de m'épater en créant une commande un peu fun ! Cela peut être n'importe quoi.
 
