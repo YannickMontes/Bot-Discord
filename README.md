@@ -179,7 +179,7 @@ Un exemple d'utilisation:
 ![skip exemple](ReadmeImages/skipExemple.PNG)
 
 
-### 6 Les triggers *(30 points)*
+### 6 Les triggers *(20 points)*
 
 Toujours dans le but de passer le moment le plus exceptionnel qu'il soit sur notre serveur, on aimerait bien que notre bot possède des triggers.
 
@@ -193,7 +193,7 @@ Chaque commande devra permettre à l'utilisateur de savoir si elle a bien foncti
 
 Pour vous faciliter la tâche, je vous conseille de partir du principe que chaque paramètre qui sera passé à la commande sera entre ```{}```
 
-### 6.1 Ajouter un trigger *(12)*
+### 6.1 Ajouter un trigger *(8)*
 
 L'utilisateur du bot devra être capable d'ajouter un trigger a la base de données. 
 
@@ -203,7 +203,7 @@ Voici un exemple ci-dessous:
 
 ![addtrigger exemple](ReadmeImages/addTriggerExemple.png)
 
-### 6.2 Supprimer un trigger *(12)*
+### 6.2 Supprimer un trigger *(8)*
 
 Une commande pour supprimer un trigger sera disponible. Elle prendra en paramètre la triggerPhrase du trigger. 
 
@@ -211,7 +211,7 @@ Voici un exemple ci-dessous:
 
 ![rmtrigger exemple](ReadmeImages/rmTriggerExemple.png)
 
-### 6.3 Inspecter tout les triggers *(6)*
+### 6.3 Inspecter tout les triggers *(4)*
 
 Pour pouvoir savoir quels triggers existent sur le serveur, une commande ```triggerlist``` sera disponible. 
 
@@ -228,7 +228,7 @@ Par soucis de facilité, on aimerait bien pouvoir avoir le contenu d'un seul tri
 
 De la même manière, pour éviter de supprimer et recréer un trigger, on aimerait pouvoir le modifier. Pour cela, une commande ```modifytrigger```, prenant en paramètre le nom du trigger, puis un JSON de modification (par exemple) serait le bienvenu. 
 
-### 7 Songlink/Odesli: utilisation d'une API externe
+### 7 Songlink/Odesli: utilisation d'une API externe *(10 points)*
 
 Si vous ne connaissez pas Songlink, c'est une API qui permet d'obtenir les liens d'une musique sur toutes les plateforme, depuis une spécifique.
 
