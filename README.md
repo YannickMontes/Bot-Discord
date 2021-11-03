@@ -176,7 +176,7 @@ Cette commande permettra de passer a la chanson suivante. S'il n'y en a pas, le 
 
 Un exemple d'utilisation: 
 
-![skip exemple](ReadmeImages/skipExemple.PNG)
+![skip exemple](ReadmeImages/skipExemple.png)
 
 
 ### 6 Les triggers *(20 points)*
