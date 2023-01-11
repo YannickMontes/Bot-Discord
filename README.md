@@ -23,7 +23,7 @@ La notation se fera sur 100 points. Chaque partie possède une note qui sera pr�
 Le fonctionnement global de votre bot est noté sur **70**, les **30** points restants se jouent sur la qualité du code (organisaiton, lisibilité, propreté).
 La note sera ramené sur 20 par la suite.
 
-## 2. Les fonctionnalités de base _(15 points)_
+## 2. Les fonctionnalités de base _(10 points)_
 
 Imaginons que vous vouliez utiliser votre bot à des fins de modérations, relativement basiques, permettant de kicker un utilisateur du serveur, de bannir un utilisateur, de timeout quelqu’un pour qu’il ne puisse pas parler, ect. Nous allons dans un premier temps implémenter ces commandes.
 
@@ -50,7 +50,7 @@ Faites attention toutefois, Discord ne nous autorise pas à supprimer les messag
 
 ![clear exemple](Images/ClearExample.png)
 
-### 2.3 La commande kick _(3pts)_
+### 2.3 La commande kick _(2pts)_
 
 Avec cette commande, nous allons pouvoir virer un utilisateur du serveur. Ce dernier pourra néanmoins toujours le rejoindre.
 
@@ -69,7 +69,7 @@ Le bot devra nous renvoyer une réponse, comme sur l'exemple ci-dessous :
 
 ![kick exemple](Images/KickExample.png)
 
-### 2.4 La commande ban & unban _(5pts)_
+### 2.4 La commande ban & unban _(3pts)_
 
 Très similaire à la commande kick, elle permet de bannir un utilisateur du serveur, mais cette fois-ci sans autoriser la personne virée de le rejoindre à nouveau.
 
@@ -100,7 +100,7 @@ Paramètres:
 
 Vous pouvez mettre le retour de cette commande seulement pour la personne qui l'as envoyé.
 
-### 2.5 Les commandes mute & unmute _(5pts)_
+### 2.5 Les commandes mute & unmute _(3pts)_
 
 Via cette commande, nous allons essayer d'empêcher un utilisateur de pouvoir parler sur le serveur pour un temps donné.
 
@@ -119,7 +119,7 @@ Paramètres:
 
 \*Hint: Vous pouvez utiliser le package **"ms"** de npm, pour pouvoir interpréter les durées de temps sous forme de "1m", "10s", ect.
 
-## 3. Gérer l'acceuil et les réactions _(7 points)_
+## 3. Gérer l'acceuil et les réactions _(10 points)_
 
 ### 3.1 Traitement lors d'un nouvel arrivant _(3 pts)_
 
@@ -128,7 +128,7 @@ Ici, nous allons imaginer un scénario ou le bot nous assigne un rôle spécifiq
 
 Pour cela, vous pourrez utiliser l'évènement **GuildMemberAdd** de Discord.js.
 
-### 3.2 Assigner des rôles selon les réactions _(5 pts)_
+### 3.2 Assigner des rôles selon les réactions _(4 pts)_
 
 Par soucis de facilité sur les gros serveur discord, chaque utilisateur décide de s'assigner les rôles qu'il veut sur le serveur.
 Généralement, ces rôles permettent d'accéder à certains channels (textuels ou vocaux) du serveur. Sans ce rôle, impossible d'y accéder.
@@ -144,7 +144,7 @@ La commande aura la forme suivante:
 Lorsqu'un utilisteur réagit, nous voulons ajouter le rôle correspondant a l'émoji avec lequel il a réagit à l'utilisateur.
 De même, lorsqu'il enlève sa réaction, on veut lui enlever le rôle.
 
-### 3.3 Gérer les évènements impromptus _(X points)_
+### 3.3 Gérer les évènements impromptus _(3 points)_
 
 Une fois votre serveur hébergé quelque-part, il peut arriver qu'il soit redémarré, pour X ou Y raisons. Il peut même être redémarré de votre propre fait, suite à une mise à jour par exemple.
 
@@ -165,7 +165,7 @@ Voici un exemple ci-dessous:
 
 ![reaction role exemple](Images/ReactionRoleExample.png)
 
-## 4. Créer un sondage via la commande Poll _(8 points)_
+## 4. Créer un sondage via la commande Poll _(5 points)_
 
 Inspiré du bot Simple poll (que vous pouvez voir [ici](https://top.gg/bot/simplepoll)), nous allons créer une commande permettant de créer un sondage.
 
@@ -180,7 +180,7 @@ Voici un exemple d'utilisation :
 
 _Hint: Pensez à regarder la doc de Discord.js, qui permet de créer pleins de messages bien formatté, comme les EmbedMessage par exemple._
 
-## 5. Jouer de la musique dans un salon vocal _(20 points)_
+## 5. Jouer de la musique dans un salon vocal _(15 points)_
 
 Pour s'ambiancer jusqu'a pas d'heures pendant les sessions de ~~gaming~~ cours, rien ne vaut un petit peu de musique.
 
@@ -197,7 +197,7 @@ Toute commande venant d'un utilisateur qui ne se situe pas dans un channel vocal
 Pour l'architecture, je vous encourage à avoir une sorte de classe qui gère toute les informations.
 Vous allez devoir avoir une liste d'attente par guilde (serveur).
 
-### 5.1 La commande play _(8)_
+### 5.1 La commande play _(4)_
 
 Pour commencer, nous allons demander au bot de jouer une musique. La commande prendra en paramètre, soit une URL youtube directement, soit une phrase, qui sera recherchée directement sur Youtube. Le bot devra prendre le premier résultat trouvé, par facilité.
 
@@ -211,7 +211,7 @@ Un exemple de l'utilisation de la commande est visible ci-dessous :
 
 ![Play exemple](Images/PlayExample.png)
 
-### 5.2 La commande stop _(8)_
+### 5.2 La commande stop _(4)_
 
 Cette commande aura pour conséquence d'arrêter la musique en cours, et de faire quitter le channel vocal au bot.
 
@@ -219,7 +219,7 @@ Un exemple d'utilisation:
 
 ![Stop exemple](Images/StopExample.png)
 
-### 5.3 La commande skip _(4)_
+### 5.3 La commande skip _(3)_
 
 Cette commande permettra de passer a la chanson suivante. S'il n'y en a pas, le bot quittera le channel vocal.
 
@@ -230,7 +230,7 @@ Un exemple d'utilisation:
 La commande **pause** permet de mettre en pause la musique actuellement écoutée.
 Vous pouvez la reprendre avec la commande **unpause**
 
-### 6 Les triggers _(20 points)_
+### 6 Les triggers _(13 points)_
 
 Toujours dans le but de passer le moment le plus exceptionnel qu'il soit sur notre serveur, on aimerait bien que notre bot possède des triggers.
 
@@ -244,7 +244,7 @@ Dans l'idéal, on aimerait que nos triggers soient spécifiques à chaque serveu
 
 Pour plus de fun, on aimerait qu'il existe un compteur d'utilisations du trigger pour chaque utilisateur. Vous pouvez bien entendu stocker cette information en base de données.
 
-### 6.1 Ajouter un trigger _(8)_
+### 6.1 Ajouter un trigger _(3)_
 
 L'utilisateur du bot devra être capable d'ajouter un trigger a la base de données.
 
@@ -259,7 +259,7 @@ Paramètres:
 - **trigger**, les élements que le bot va analyser et auxquels il va répondre
 - **whatToTrigger**, ce que le bot doit répondre
 
-### 6.2 Supprimer un trigger _(8)_
+### 6.2 Supprimer un trigger _(3)_
 
 Une commande pour supprimer un trigger sera disponible. Elle prendra en paramètre la triggerPhrase du trigger.
 
@@ -271,7 +271,7 @@ Paramètres:
 
 - **trigger**, le nom du trigger
 
-### 6.3 Inspecter tout les triggers _(4)_
+### 6.3 Inspecter tout les triggers _(3)_
 
 Pour pouvoir savoir quels triggers existent sur le serveur, une commande `triggerlist` sera disponible.
 
@@ -282,7 +282,7 @@ Voici un exemple ci-dessous:
 
 ![triggerlist exemple](Images/Triggerlist.png)
 
-### 6.4 Inspecter un trigger _(4)_
+### 6.4 Inspecter un trigger _(2)_
 
 Par soucis de facilité, on aimerait bien pouvoir avoir le contenu d'un seul trigger en utilisant la commande `inspect`.
 
@@ -290,7 +290,7 @@ On aimerait qu'elle retourne le nom du trigger, le contenu que le bot doit répo
 
 ![inspect exemple](ReadmeImages/InspectExample.png)
 
-### 6.5 Modifier un trigger _(4)_
+### 6.5 Modifier un trigger _(2)_
 
 De la même manière, pour éviter de supprimer et recréer un trigger, on aimerait pouvoir le modifier.
 
@@ -300,7 +300,7 @@ Paramètres:
 - **newTrigger**, le nouveau trigger (optionel)
 - **content**, le nouveau contenu du trigger (optionnel)
 
-### 7 Songlink/Odesli: utilisation d'une API externe _(10 points)_
+### 7 Songlink/Odesli: utilisation d'une API externe _(7 points)_
 
 Si vous ne connaissez pas Songlink, c'est une API qui permet d'obtenir les liens d'une musique sur toutes les plateforme, depuis une spécifique.
 
@@ -316,9 +316,9 @@ Pour ce faire, vous pouvez vous aider de la documentation [ici](https://www.noti
 
 ![songlink exemple](Images/SonglinkExample.png)
 
-### 8 Quelquechose de créatif ?
+### 8 Quelquechose de créatif ? _(10pts)_
 
-A vous de m'épater en créant une commande un peu fun ! Cela peut être n'importe quoi.
+A vous de m'épater en créant des commandes un peu fun ! Cela peut être n'importe quoi.
 
 Si vous n'avez vraiment pas d'idées, n'hésitez pas à regarder ce qui se fait déjà, et essayer de re-coder le comportement.
 
